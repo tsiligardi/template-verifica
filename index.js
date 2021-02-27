@@ -1,8 +1,13 @@
 const express = require("express")
+const sqlite3 = require("sqlite3").verbose()
 const app = new express()
 const fetch = require("node-fetch")
 const bodyparser = require("body-parser")
 app.use(bodyparser.json())
+const db = new sqlite3.Database("./database.db")
+
+/* db.get ->Restituisce il primo valore che trova nel db che rispecchi la query
+  db.all -> Restituisce tutti i valori del db che soddisfano la query*/
 
 app.get("/accreditamento", (req, res) => {
   res.json({
